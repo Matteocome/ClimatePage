@@ -12,6 +12,7 @@ st.write("Hello")
 
 ## Testing code:
 
+
 def generate_mind_map(nodes):
     dot = graphviz.Digraph(format="png")
     
@@ -41,7 +42,7 @@ def main():
         if current_parent:
             parent_node = current_parent
         else:
-            parent_node = st.selectbox("Select Parent Node:", ["None"] + [node for node in nodes], key="parent_selector")
+            parent_node = st.selectbox("Select Parent Node:", ["None"] + [node for node, _, _ in nodes], key="parent_selector")
 
         if st.form_submit_button("Add Node"):
             nodes.append((new_node, parent_node, description))
@@ -62,6 +63,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
