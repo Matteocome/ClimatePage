@@ -11,8 +11,6 @@ import graphviz
 st.write("Hello")
 
 ## Testing code:
-import streamlit as st
-import graphviz
 
 def generate_mind_map(nodes):
     dot = graphviz.Digraph(format="png")
@@ -59,7 +57,19 @@ def main():
     st.sidebar.subheader("Generated Mind Map")
 
     for node, parent_node, desc in nodes:
-        st.sidebar.write(f"Node: {node}, Parent
+        st.sidebar.write(f"Node: {node}, Parent: {parent_node}, Description: {desc}")
+    
+    st.sidebar.write("Click the button below to generate the mind map:")
+
+    generate_map = st.button("Generate Mind Map")
+
+    if generate_map:
+        dot = generate_mind_map(nodes)
+        st.graphviz_chart(dot)
+
+if __name__ == "__main__":
+    main()
+
 
 
 
