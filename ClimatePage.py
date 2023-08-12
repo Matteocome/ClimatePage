@@ -3,8 +3,6 @@
 import streamlit as st
 import networkx as nx
 import matplotlib.pyplot as plt
-from streamlit import GraphvizChart
-from PIL import Image
 import pandas as pd 
 import numpy as np
 import altair as alt
@@ -12,6 +10,8 @@ import altair as alt
 st.write("Hello")
 
 ## Testing code:
+import streamlit as st
+import graphviz
 import streamlit as st
 import graphviz
 
