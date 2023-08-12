@@ -11,7 +11,8 @@ import graphviz
 st.write("Hello")
 
 ## Testing code:
-
+import streamlit as st
+import graphviz
 
 def generate_mind_map(nodes):
     dot = graphviz.Digraph(format="png")
@@ -33,36 +34,33 @@ def main():
     nodes = []  # List to store node information (node, parent, description)
     current_parent = None
 
-    st.sidebar.header("Add Nodes")
+    st.sidebar.header("Set Parent Node")
+
+    parent_node = st.text_input("Enter Parent Node Name:")
+
+    st.sidebar.write("Click the button below to set the parent node:")
+
+    set_parent = st.button("Set Parent Node")
+
+    if set_parent:
+        current_parent = parent_node
+
+    st.sidebar.subheader("Add Child Nodes")
 
     with st.sidebar.form("add_node_form"):
-        new_node = st.text_input("Enter Node Name:")
+        new_node = st.text_input("Enter Child Node Name:")
         description = st.text_area("Enter Description:")
-        
-        if current_parent:
-            parent_node = current_parent
-        else:
-            parent_node = st.selectbox("Select Parent Node:", ["None"] + [node for node, _, _ in nodes], key="parent_selector")
 
-        if st.form_submit_button("Add Node"):
-            nodes.append((new_node, parent_node, description))
-            current_parent = new_node  # Set the current parent to the newly added node
-            
+        submitted = st.form_submit_button("Add Child Node")
+
+        if submitted and new_node:
+            nodes.append((new_node, current_parent, description))
+    
     st.sidebar.subheader("Generated Mind Map")
 
     for node, parent_node, desc in nodes:
-        st.sidebar.write(f"Node: {node}, Parent: {parent_node}, Description: {desc}")
-    
-    st.sidebar.write("Click the button below to generate the mind map:")
+        st.sidebar.write(f"Node: {node}, Parent
 
-    generate_map = st.button("Generate Mind Map")
-
-    if generate_map:
-        dot = generate_mind_map(nodes)
-        st.graphviz_chart(dot)
-
-if __name__ == "__main__":
-    main()
 
 
 
