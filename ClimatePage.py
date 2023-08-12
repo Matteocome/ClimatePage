@@ -57,7 +57,7 @@ def main():
     st.sidebar.subheader("Generated Mind Map")
 
     for node, parent_node, desc in nodes:
-        st.sidebar.write(f"Node: {node}, Parent: {parent_node}, Description: {desc}")
+        st.sidebar.write(f"Node: {node}, Parent: {current_parent}, Description: {desc}")
     
     st.sidebar.write("Click the button below to generate the mind map:")
 
