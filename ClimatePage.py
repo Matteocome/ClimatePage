@@ -30,7 +30,7 @@ def main():
     st.write("Create a simple mind map by adding nodes with descriptions.")
 
     nodes = []  # List to store node information (node, parent, description)
-    current_parent = None
+    
 
     st.sidebar.header("Set Parent Node")
 
@@ -41,7 +41,7 @@ def main():
     set_parent = st.button("Set Parent Node")
 
     if set_parent:
-        current_parent = parent_node
+        current_parent = set_parent
 
     st.sidebar.subheader("Add Child Nodes")
 
