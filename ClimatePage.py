@@ -11,8 +11,6 @@ import graphviz
 st.write("Hello")
 
 ## Testing code:
-import streamlit as st
-import graphviz
 
 def generate_mind_map(nodes):
     dot = graphviz.Digraph(format="png")
@@ -32,7 +30,7 @@ def main():
     st.write("Create a simple mind map by adding nodes with descriptions.")
 
     nodes = []  # List to store node information (node, parent, description)
-    current_parent = "Source"
+    current_parent = None
 
     st.sidebar.header("Add Nodes")
 
@@ -43,7 +41,7 @@ def main():
         if current_parent:
             parent_node = current_parent
         else:
-            parent_node = st.selectbox("Select Parent Node:", ["None"] + [node for node, _, _ in nodes])
+            parent_node = st.selectbox("Select Parent Node:", ["None"] + [node for node, _, _ in nodes], key="parent_selector")
 
         if st.form_submit_button("Add Node"):
             nodes.append((new_node, parent_node, description))
@@ -64,6 +62,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
