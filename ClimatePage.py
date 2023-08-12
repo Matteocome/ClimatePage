@@ -11,8 +11,6 @@ import graphviz
 st.write("Hello")
 
 ## Testing code:
-
-
 def generate_mind_map(nodes):
     dot = graphviz.Digraph(format="png")
     
@@ -59,5 +57,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
